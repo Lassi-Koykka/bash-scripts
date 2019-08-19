@@ -1,0 +1,27 @@
+#!/bin/bash
+#Script for creating a new named directory into the programming folder
+
+$path = "$HOME/Documents/programming/"
+
+echo -n "The name of the directory: "
+read dirName
+
+$dir = "$path/$dirName"
+
+function createDir {
+if 
+	[ -d "$dir" ] ; then
+	echo 'A directory named "$dirName" already exists'
+	exit 1
+else
+	mkdir $dir
+	touch 
+fi
+}
+
+function askSubdirectories{
+echo "Do you want to create subdirectories? [y/n] "
+
+}
+
+

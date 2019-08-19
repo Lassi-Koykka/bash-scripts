@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#Compile and run a specified *.c file
+
+cFileName="$1.c"
+exe="$1"
+namedExe="$2"
+
+useName() {
+	gcc "$PWD/$cFileName" -o "$PWD/$exe"
+	echo "
+	
+	############RUNNING-CODE###############
+	
+	"
+	$PWD/$exe 
+}
+
+newCopy() {
+	gcc "$PWD/$cFileName" -o "$PWD/$namedExe"
+	echo "
+	
+	############RUNNING-CODE#############
+	
+	"
+	$PWD/$namedExe
+}
+
+case $# in
+	0)
+		echo "No arguments supplied"
+		exit 1
+		;;
+
+	1)
+		useName
+		exit 0
+		;;
+
+
+	2)
+		newCopy
+		exit 0
+		;;
+
+	*)
+		echo error
+		exit 1
+esac

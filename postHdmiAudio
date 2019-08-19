@@ -1,0 +1,13 @@
+#!/bin/bash
+#Script for fixing audio after disconnecting from HDMI
+
+rm -i "$HOME/.cache/event-sound-cache.*"
+
+rm -rf /tmp/pulse* ~/.pulse* ~/.config/pulse
+pulseaudio -k
+pulseaudio --start
+
+echo "You have to restart your system for the changes to take effect"
+
+exit 0
+

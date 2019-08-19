@@ -1,0 +1,57 @@
+#!/bin/bash
+#Creating a new Projectfolder in webdev
+
+case $# in
+        0)
+                FILE="$HOME/Programming/webdev/New_Project"
+                ;;
+
+        1)
+                FILE="$HOME/Programming/webdev/$1"
+                ;;
+esac
+if [ -d "$FILE" ]; then
+    echo "File $FILE already exists, delete or rename it" >&2
+    exit 1
+else
+    mkdir -p "$FILE/js" "$FILE/css"
+echo "<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    
+</body>
+</html>" >> $FILE/Index.html                                                  
+ echo "html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}" >> $FILE/css/style.css 
+    touch $FILE/js/script.js                        
+    exit 0
+fi
